@@ -31,11 +31,11 @@ const WarningLayer = () => {
   const cn = useStyles()
   const layer = useMirror()
 
-  const notes = useObserver(() => MappingState.samePosNotes)
+  const notes = useObserver(() => MappingState.sameTimeNotes)
 
   useEffect(() => {
     if (notes.size > 0)
-      userMessage(i18n.t("Some notes are in the same position"), "warning")
+      userMessage(i18n.t("Some notes are in the same time"), "warning")
   }, [notes.size])
 
   return (

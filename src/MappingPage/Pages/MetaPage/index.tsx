@@ -18,16 +18,13 @@ const useStyles = makeStyles(() => ({
 
 const Links = () =>
   <Grid item>
-    <Typography align="right" color="textSecondary">
-      <Link target="_blank" rel="noopener noreferrer" href="https://github.com/GEEKiDoS/D4DJ-Tools">
-        D4DJ Tools
-    </Link>&nbsp;|&nbsp;
-    <Link target="_blank" rel="noopener noreferrer" href="http://girlbands.party/d4dj/chart-previewer/">
-        D4DJ Chart Previewer
-    </Link>&nbsp;|&nbsp;
-    <Link target="_blank" rel="noopener noreferrer" href="https://github.com/K024/bangbangboom-editor">
+    <Typography align="center" color="textSecondary">
+      <Link target="_blank" rel="noopener noreferrer" href="https://github.com/GEEKiDoS/mg_hachimi">
+        地图源文件
+      </Link>&nbsp;|&nbsp;
+      <Link target="_blank" rel="noopener noreferrer" href="https://github.com/K024/bangbangboom-editor">
         About bangbangboom editor & translations
-    </Link>
+      </Link>
     </Typography>
   </Grid>
 

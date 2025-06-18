@@ -2,6 +2,7 @@ import React from "react"
 import Grid from "@material-ui/core/Grid"
 import AttachFileIcon from '@material-ui/icons/AttachFile'
 import QueueMusicIcon from '@material-ui/icons/QueueMusic'
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd'
 import FileField from "../../../Common/Components/FileField"
 import { Music, Background } from "../../states"
 import { userMessage } from "../../../Common/Components/GlobalSnackbar"
@@ -35,6 +36,19 @@ const MapName = () => {
     </Grid>)
 }
 
+const ChartName = () => {
+
+  const { t } = useTranslation()
+
+  return useObserver(() =>
+    <Grid item container spacing={2} alignItems="flex-end">
+      <Grid item><AssignmentIndIcon /></Grid>
+      <Grid item xs>
+        <TextField fullWidth label={t("Chart name")} value={scope.meta.chartName}
+          onChange={e => scope.meta.chartName = e.target.value} />
+      </Grid>
+    </Grid>)
+}
 
 let musicfilename = ""
 const selectM = (files: File[]) => {
@@ -70,6 +84,8 @@ const SelectBackground = () => {
 }
 
 const Inputs = () => <>
+  <MapName />
+  <ChartName />
   <SelectMusic />
 </>
 

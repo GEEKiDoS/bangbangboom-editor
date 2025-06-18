@@ -151,14 +151,16 @@ const doubleClickHandler = (nid: number) => {
         e.stopPropagation();
         e.preventDefault();
         if (state.preventClick) return;
-        const note = assert(scope.map.notes.get(nid));
-        if (note.type === "slide") {
-            const s = assert(scope.map.slides.get(note.slide));
-            if (note.id === s.notes[s.notes.length - 1])
-                scope.map.toggleFlickend(s.id);
-        } else {
-            scope.map.toggleFlick(note);
-        }
+
+        return;
+        // const note = assert(scope.map.notes.get(nid));
+        // if (note.type === "slide") {
+        //     const s = assert(scope.map.slides.get(note.slide));
+        //     if (note.id === s.notes[s.notes.length - 1])
+        //         scope.map.toggleFlickend(s.id);
+        // } else {
+        //     scope.map.toggleFlick(note);
+        // }
     };
 };
 
@@ -192,7 +194,7 @@ const Note = ({ note }: { note: NoteType }) => {
         }
         switch (note.type) {
             case "single":
-                src = assets.d4dj_tap;
+                src = assets.maodie_tap;
                 break;
             case "flick":
                 src =

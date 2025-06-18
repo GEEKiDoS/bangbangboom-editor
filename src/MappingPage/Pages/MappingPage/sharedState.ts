@@ -7,6 +7,7 @@ import { NoteType } from "../../../MappingScope/EditMap"
 export type ToolTypes = "none" | "single" | "slide" | "delete" | "laser"
 
 const NoteSig = (n: NoteType) => `${n.timepoint}:${n.offset}:${n.lane}`
+const NoteSigWithoutLane = (n: NoteType) => `${n.timepoint}:${n.offset}`
 
 class State {
 
@@ -57,6 +58,17 @@ class State {
     const set = new Set<string>()
     for (const n of scope.map.notelist) {
       const sig = NoteSig(n)
+      if (set.has(sig)) notes.add(n.id)
+      set.add(sig)
+    }
+    return notes
+  }
+
+  @computed get sameTimeNotes() {
+    const notes = new Set<number>()
+    const set = new Set<string>()
+    for (const n of scope.map.notelist) {
+      const sig = NoteSigWithoutLane(n)
       if (set.has(sig)) notes.add(n.id)
       set.add(sig)
     }

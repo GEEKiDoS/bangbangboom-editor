@@ -13,6 +13,7 @@ import {toD4DJGameFormat, D4DJExport} from "../../../MapFormats/d4dj"
 import {EditMap} from "../../../MappingScope/EditMap"
 import i18n from "../../../i18n"
 import {Music} from "../../../MappingPage/states"
+import { toHachimiFormat } from "../../../MapFormats/hachimi"
 
 const importBBBv1 = async () => {
     try {
@@ -43,6 +44,17 @@ const exportD4DJ = () => {
         downLoadFile(content.chart, "chart_00000014.json")
         openDialog(i18n.t("Please replace the corresponding item in ChartNoteCountMaster with this:"), content.noteCount)
     } catch(error) {
+        openDialog(i18n.t("An error occurred during export"), i18n.t("" + error))
+        userMessage(i18n.t("Error export"), "error")
+        throw error
+    }
+}
+
+const exportHachimi = () => {
+    try {
+        const content = toHachimiFormat(scope.map.state, scope.meta);
+        openDialog(i18n.t("Export hachimi format map"), content)
+    } catch (error) {
         openDialog(i18n.t("An error occurred during export"), i18n.t("" + error))
         userMessage(i18n.t("Error export"), "error")
         throw error
@@ -110,6 +122,7 @@ const upload = async () => {
     } catch (error) {
         if (onProcess) uploading = false;
         if (!error) return
+        if (!(error instanceof Error)) return
         userMessage(i18n.t(error.message), "error")
         throw error
     }
@@ -150,6 +163,7 @@ const uploadToAyaSonolus = async () => {
     } catch (error) {
         if (onProcess) uploadingToAyaSonolus = false;
         if (!error) return
+        if (!(error instanceof Error)) return
         userMessage(i18n.t(error.message), "error")
         throw error
     }
@@ -173,8 +187,8 @@ const Actions = () => {
                 </Button>
             </Grid>
             <Grid item>
-                <Button fullWidth variant="outlined" onClick={exportD4DJ}>
-                    {t("Download D4DJ Chart")}
+                <Button fullWidth variant="outlined" onClick={exportHachimi}>
+                    {t("Download Hachimi Chart CFG")}
                 </Button>
             </Grid>
             <Grid item>

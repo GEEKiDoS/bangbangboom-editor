@@ -49,9 +49,7 @@ const SelectTool = () => {
 
   useEffect(() => addHotkey("1", () => MappingState.tool = "none"), [])
   useEffect(() => addHotkey("2", () => MappingState.tool = "single"), [])
-  useEffect(() => addHotkey("3", () => MappingState.tool = "slide"), [])
-  useEffect(() => addHotkey("4", () => MappingState.tool = "laser"), [])
-  useEffect(() => addHotkey("5", () => MappingState.tool = "delete"), [])
+  useEffect(() => addHotkey("3", () => MappingState.tool = "delete"), [])
 
   return useObserver(() =>
     <Grid item>
@@ -61,7 +59,6 @@ const SelectTool = () => {
           <Grid item>
             <Tooltip placement="right"
               title={<Typography variant="body2">
-                {t("Double click to switch flick")} <br />
                 {t("Right click to delete note(s)")} <br />
                 {t("Click the slide bar to add mid note")} <br />
                 {t("Hold ctrl and drag to multi-select & copy notes")}
@@ -75,16 +72,10 @@ const SelectTool = () => {
         <FormControlLabel value="none" control={<Radio />}
           label={t("None")} title={t("Hotkey: {{ hotkey }}", { hotkey: "1" })} />
         <FormControlLabel value="single" control={<Radio />}
-          label={t("Tap/Scratch/Single Slide")}
+          label={t("Tap")}
           title={t("Hotkey: {{ hotkey }}", { hotkey: "2" })} />
-        <FormControlLabel value="slide" control={<Radio />}
-          label={t("Hold/Stop")}
-          title={t("Hotkey: {{ hotkey }}", { hotkey: "3" })} />
-        <FormControlLabel value="laser" control={<Radio />}
-          label={t("Slide")}
-          title={t("Hotkey: {{ hotkey }}", { hotkey: "4" })} />
         <FormControlLabel value="delete" control={<Radio />}
-          label={t("Delete")} title={t("Hotkey: {{ hotkey }}", { hotkey: "5 / Right click" })} />
+          label={t("Delete")} title={t("Hotkey: {{ hotkey }}", { hotkey: "3 / Right click" })} />
       </RadioGroup>
     </Grid>)
 }

@@ -21,7 +21,7 @@ export class MapActions extends MapActionsBase {
 
   @action.bound
   moveTimepoint(timepoint: number, justifyFindNearest: boolean, justifydivision: number, time?: number, bpm?: number, bpb?: number) {
-    const tp = assert(this.state.timepoints.get(timepoint))
+    const tp = assert(this.state_.timepoints.get(timepoint))
     const timechanged =
       (time !== undefined && tp.time !== time) ||
       (bpm !== undefined && tp.bpm !== bpm)
@@ -39,7 +39,7 @@ export class MapActions extends MapActionsBase {
 
   @action.bound
   removeTimepoint(timepoint: number, justifydivision: number) {
-    if (this.state.timepoints.size > 1) {
+    if (this.state_.timepoints.size > 1) {
       return this.done(this.history.doParallel(() => {
         this.justifyFindNearest(this.notelist, justifydivision, timepoint)
         this.history.callAtom(TimepointActions.Remove, timepoint)
@@ -48,9 +48,9 @@ export class MapActions extends MapActionsBase {
       return this.done(this.history.doParallel(() => {
         this.deleteMany(this.notelist)
         this.history.callAtom(TimepointActions.Remove, timepoint)
-        if (this.state.slides.size ||
-          this.state.notes.size ||
-          this.state.timepoints.size) neverHappen()
+        if (this.state_.slides.size ||
+          this.state_.notes.size ||
+          this.state_.timepoints.size) neverHappen()
       }))
     }
   }
@@ -80,7 +80,7 @@ export class MapActions extends MapActionsBase {
 
   @action.bound
   toggleFlickend(slide: number) {
-    const s = assert(this.state.slides.get(slide))
+    const s = assert(this.state_.slides.get(slide))
     return this.done(this.history.doTransaction(() =>
       this.history.callAtom(SlideActions.Set, slide, { flickend: !s.flickend })))
   }
@@ -98,7 +98,7 @@ export class MapActions extends MapActionsBase {
         const targetTime = n.realtimecache + timeoffset
         const targetLane = n.lane + laneoffset
         if (targetTime > max || targetTime < min || targetLane < 0 || targetLane > 6) {
-          for (const n of notes) FreshNoteCache(this.state, n)
+          for (const n of notes) FreshNoteCache(this.state_, n)
           return false
         }
         this.patchNote(n, { lane: targetLane })
@@ -123,7 +123,7 @@ export class MapActions extends MapActionsBase {
         if (slideNoteCount[slideid] >= 2) {
           const id = randomId()
           this.history.callAtom(SlideActions.Add, id,
-            assert(this.state.slides.get(slideid)).flickend)
+            assert(this.state_.slides.get(slideid)).flickend)
           slideidmap[slideid] = id
         }
       }

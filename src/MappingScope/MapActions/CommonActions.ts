@@ -3,7 +3,7 @@ import { action, observable, computed } from "mobx"
 
 export class CommonActions<T> {
   protected history: AtomHistory<T>
-  @observable protected state: T
+  @observable protected state_: T
 
   @observable private act_done: number[] = []
   @observable private act_todo: number[] = []
@@ -13,7 +13,11 @@ export class CommonActions<T> {
   
   constructor(state: T) {
     this.history = new AtomHistory(state)
-    this.state = state
+    this.state_ = state
+  }
+
+  get state(): T {
+    return this.state_;
   }
 
   readonly changeListeners = new Set<() => void>()
@@ -26,7 +30,7 @@ export class CommonActions<T> {
 
   @action
   ResetState = (state: T) => {
-    this.state = state
+    this.state_ = state
     this.history = new AtomHistory(state)
     this.act_done = []
     this.act_todo = []

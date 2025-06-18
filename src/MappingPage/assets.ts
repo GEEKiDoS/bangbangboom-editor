@@ -15,6 +15,7 @@ const assets = {
   d4dj_slide_flick: "/assets/mapping/d4dj_slide_flick.png",
   d4dj_hold: "/assets/mapping/d4dj_hold.png",
   d4dj_flick: "/assets/mapping/d4dj_flick.png",
+  maodie_tap: "/assets/mapping/maodie.png",
 }
 
 for (const k in assets) {

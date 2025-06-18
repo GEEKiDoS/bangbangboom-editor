@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/d4dj/editor/static/css/main.5238747f.chunk.css",
-    "main.js": "/d4dj/editor/static/js/main.94f5b0f5.chunk.js",
-    "main.js.map": "/d4dj/editor/static/js/main.94f5b0f5.chunk.js.map",
+    "main.js": "/d4dj/editor/static/js/main.b0995510.chunk.js",
+    "main.js.map": "/d4dj/editor/static/js/main.b0995510.chunk.js.map",
     "runtime-main.js": "/d4dj/editor/static/js/runtime-main.34cf1d1e.js",
     "runtime-main.js.map": "/d4dj/editor/static/js/runtime-main.34cf1d1e.js.map",
     "static/js/2.d4cb5263.chunk.js": "/d4dj/editor/static/js/2.d4cb5263.chunk.js",
     "static/js/2.d4cb5263.chunk.js.map": "/d4dj/editor/static/js/2.d4cb5263.chunk.js.map",
     "index.html": "/d4dj/editor/index.html",
-    "precache-manifest.e163fe453e6a57ef895e048dd3f8da28.js": "/d4dj/editor/precache-manifest.e163fe453e6a57ef895e048dd3f8da28.js",
+    "precache-manifest.02add5bc7162625316702a12b0806654.js": "/d4dj/editor/precache-manifest.02add5bc7162625316702a12b0806654.js",
     "service-worker.js": "/d4dj/editor/service-worker.js",
     "static/css/main.5238747f.chunk.css.map": "/d4dj/editor/static/css/main.5238747f.chunk.css.map",
     "static/js/2.d4cb5263.chunk.js.LICENSE.txt": "/d4dj/editor/static/js/2.d4cb5263.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.34cf1d1e.js",
     "static/js/2.d4cb5263.chunk.js",
     "static/css/main.5238747f.chunk.css",
-    "static/js/main.94f5b0f5.chunk.js"
+    "static/js/main.b0995510.chunk.js"
   ]
 }
