@@ -72,9 +72,9 @@ export function toHachimiFormat(map: EditMap, meta: Meta): string {
   lines.push(`ent_fire s2ts-script Music_SetCharter "${meta.chartName}"`);
   lines.push(`ent_fire s2ts-script Music_SetSoundEvent "music.dummy_music"`);
   lines.push(`ent_fire s2ts-script Music_SetCover 1`);
-  lines.push(`ent_fire s2ts-script Music_SetBarLines "${JSON.stringify([chartData.BarLineList[0], chartData.BarLineList[1]])}"`);
+  lines.push(`ent_fire s2ts-script Music_SetBarLines "${JSON.stringify([parseFloat(chartData.BarLineList[0].toFixed(2)), parseFloat(chartData.BarLineList[1].toFixed(2))])}"`);
   for (const note of chartData.NoteDataList) {
-    lines.push(`ent_fire s2ts-script Music_AddNote "${JSON.stringify([note.LaneId, note.Time])}"`);
+    lines.push(`ent_fire s2ts-script Music_AddNote "${JSON.stringify([note.LaneId, parseFloat(note.Time.toFixed(2))])}"`);
   }
   lines.push(`ent_fire s2ts-script Music_End`);
   lines.push('');
