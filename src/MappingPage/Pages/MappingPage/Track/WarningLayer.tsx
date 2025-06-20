@@ -31,11 +31,11 @@ const WarningLayer = () => {
   const cn = useStyles()
   const layer = useMirror()
 
-  const notes = useObserver(() => MappingState.sameTimeNotes)
+  const notes = useObserver(() => MappingState.tooCloseNotes)
 
   useEffect(() => {
     if (notes.size > 0)
-      userMessage(i18n.t("Some notes are in the same time"), "warning")
+      userMessage(i18n.t("Notes space is less than AK47 fire rate"), "warning")
   }, [notes.size])
 
   return (

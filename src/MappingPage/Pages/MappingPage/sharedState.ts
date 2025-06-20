@@ -8,6 +8,7 @@ export type ToolTypes = "none" | "single" | "slide" | "delete" | "laser"
 
 const NoteSig = (n: NoteType) => `${n.timepoint}:${n.offset}:${n.lane}`
 const NoteSigWithoutLane = (n: NoteType) => `${n.timepoint}:${n.offset}`
+const AK47_FIRE_DELAY = 0.1;
 
 class State {
 
@@ -62,6 +63,26 @@ class State {
       set.add(sig)
     }
     return notes
+  }
+
+  @computed get tooCloseNotes() {
+    return new Set<number>(
+      Array.from(scope.map.timepoints.keys())
+        .sort((a, b) => scope.map.timepoints.get(a)!.time - scope.map.timepoints.get(b)!.time)
+        .flatMap((tpid) => {
+          const tp = assert(scope.map.timepoints.get(tpid));
+          const tpOffset = 60 / (tp.bpm * 48);
+
+          return scope.map.notelist
+            .filter(v => v.timepoint == tpid)
+            .sort((a, b) => a.offset - b.offset)
+            .map(v => {
+              return { id: v.id, time: tp.time + tpOffset * v.offset }
+            })
+        })
+        .filter((v, i, a) => (i < (a.length - 1)) ? (a[i + 1].time - v.time < AK47_FIRE_DELAY) : false)
+        .map(v => v.id)
+    );
   }
 
   @computed get sameTimeNotes() {
